@@ -1,6 +1,7 @@
 # Variables de Entorno
 ### ¿Qué son las variables de entorno?
-# COMPLETAR
+
+Las variables de entorno son variables dinamicas que almacenan la informacion en el sistema operativo que afectan los procesos de ejecucion. Dan datos especificos al sistema operativo pero no modifican el codigo.
 
 ### Para crear un contenedor con variables de entorno
 
