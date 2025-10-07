@@ -11,18 +11,26 @@ docker run -d --name <nombre contenedor> -e <nombre variable1>=<valor1> -e <nomb
 
 ### Crear un contenedor a partir de la imagen de nginx:alpine con las siguientes variables de entorno: username y role. Para la variable de entorno rol asignar el valor admin.
 
-# COMPLETAR
+docker run -d --name nginx2 nginx:alpine -e username=dilin -e role=admin
 
-# CAPTURA CON LA COMPROBACIÓN DE LA CREACIÓN DE LAS VARIABLES DE ENTORNO DEL CONTENEDOR ANTERIOR
+<img width="1070" height="379" alt="image" src="https://github.com/user-attachments/assets/cd37d6cd-28b3-46b5-9e04-845d997c2ce6" />
 
 ### Crear un contenedor con la imagen de mysql, mapear todos los puertos
-# COMPLETAR
+docker run -P -d --name mysql mysql:latest
 
 ### ¿El contenedor se está ejecutando?
-# COMPLETAR
+directamente no si se comprueba con docker ps -a 
 
 ### Identificar el problema
-# COMPLETAR
+Las variables de entorno  
+
+    - MYSQL_ROOT_PASSWORD
+    
+    - MYSQL_ALLOW_EMPTY_PASSWORD
+    
+    - MYSQL_RANDOM_ROOT_PASSWORD
+
+no se encuentran identificadas dado que no se iniciaron o especificaron en ningun momento.
 
 ### Para crear un contenedor con variables de entorno especificadas
 - Portabilidad: Las aplicaciones se vuelven más portátiles y pueden ser desplegadas en diferentes entornos (desarrollo, pruebas, producción) simplemente cambiando el archivo de variables de entorno.
@@ -37,4 +45,24 @@ docker run -d --name <nombre contenedor> -e <nombre variable1>=<valor1> -e <nomb
 # CAPTURA CON LA COMPROBACIÓN DE LA CREACIÓN DE LAS VARIABLES DE ENTORNO DEL CONTENEDOR ANTERIOR 
 
 ### ¿Qué bases de datos existen en el contenedor creado?
-# COMPLETAR
+salen 4 bases de datos 
+
+mysql> show databases;
+
++--------------------+
+
+| Database           |
+
++--------------------+
+
+| information_schema |
+
+| mysql              |
+
+| performance_schema |
+
+| sys                |
+
++--------------------+
+
+4 rows in set (0.02 sec)
