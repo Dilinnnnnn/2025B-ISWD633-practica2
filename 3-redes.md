@@ -1,6 +1,8 @@
 # Redes
 Las redes son un componente fundamental que permite la comunicación entre contenedores, así como la comunicación de los contenedores con el mundo exterior. 
+
 ![Imagen](redes.PNG)
+
 - Bridge: Esta es la red por defecto en Docker. Permite la comunicación entre contenedores en el mismo host. Cada contenedor conectado a la red bridge tiene una IP propia en la subred de la red bridge.
     -  Brige por default: Cuando se ejecuta un contenedor, Docker crea automáticamente una red de tipo bridge por default. Esta red se utiliza para permitir la comunicación entre contenedores en el mismo host. Cada contenedor conectado a esta red obtiene su propia dirección IP en la subred de la red bridge.
     - Bridge creada por nosotros: Un usuario también puede crear sus propias redes de tipo bridge en Docker. Esto puede ser útil para organizar y segmentar los contenedores de una aplicación de manera más controlada. Al crear una red bridge personalizada, se puede especificar un rango de direcciones IP y otras configuraciones de red específicas. Los contenedores conectados a esta red utilizarán las direcciones IP de la subred definida por el usuario.
@@ -10,33 +12,34 @@ Las redes son un componente fundamental que permite la comunicación entre conte
 ### Crear una red de tipo bridge
 
 ```
-docker network create <nombre red> -d bridge
+docker network create red1 -d bridge
 ```
 
 ### Crear un contenedor vinculado a una red
 
 ```
-docker run -d --name <nombre contenedor> --network <nombre red> <nombre imagen>
+docker run -d --name pruebared --network red1 nginx:alpine
 ```
 
 ### Para saber a qué red está conectado un contenedor
 
 ```
-docker inspect <nombre contenedor>
+docker inspect prueba red
 ```
 ó
 ```
-docker network inspect <nombre red> 
+docker network inspect red1
 ```
 
 ### Vincular contenedor a una red
+
 ```
-docker network connect <nombre red> <nombre contenedor>
+docker network connect red1 pruebared
 ```
 
 ### Para desvincular un contenedor de una red
 ```
-docker network disconnect <nombre red> <nombre contenedor>
+docker network disconnect red1 pruebared
 ```
 
 ### Para listar las redes existentes
@@ -50,7 +53,14 @@ docker network ls
 
 # COLOCAR UNA CAPTURA DE LAS REDES EXISTENTES CREADAS
 
+<img width="603" height="234" alt="image" src="https://github.com/user-attachments/assets/127d47e8-2b9f-4267-96a4-502e42177e79" />
+
 # COLOCAR UNA(S) CAPTURAS(S) DE LOS CONTENEDORES CREADOS EN DONDE SE EVIDENCIE A QUÉ RED ESTÁN VINCULADOS
+
+<img width="961" height="989" alt="image" src="https://github.com/user-attachments/assets/857d8881-2d2c-49ab-bbd8-64f09654729f" />
+
+<img width="961" height="931" alt="image" src="https://github.com/user-attachments/assets/c22efda1-a9e2-4f0c-a36b-5401dd143543" />
+
 
 ### Para eliminar las redes creadas
 ```
