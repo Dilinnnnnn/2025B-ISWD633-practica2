@@ -26,9 +26,10 @@ La figura presenta el esquema creado en donde los puertos son:
 ### Crear la base de datos info, y dentro de esa base la tabla personas, con id (serial) y nombre (varchar), agregar un par de registros en la tabla, obligatorio incluir su nombre.
 
 ```
-docker exec -it postgres psql -U postgres -c "CREATE DATABASE info;"
-docker exec -it postgres psql -U postgres -d info -c "CREATE TABLE personas (id serial PRIMARY KEY, nombre varchar(50));"
-docker exec -it postgres psql -U postgres -d info -c "INSERT INTO personas (nombre) VALUES ('Dilan'),('Melany'),('Josue');"
+CREATE DATABASE info;
+CREATE TABLE personas (id serial PRIMARY KEY, nombre varchar(50));
+INSERT INTO personas (nombre) VALUES ('Dilan'),('Melany'),('Josue');
+
 ```
 
 ## Desde el servidor postgresl
